@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and preferences",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "fullName": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 150 },
+        "country": { "type": "string", "maxLength": 100 },
+        "countryCode": { "type": "string", "maxLength": 10 },
+        "preferredLocation": { "type": "string", "maxLength": 150 },
+        "targetRole": { "type": "string", "maxLength": 120 },
+        "emailVerified": { "type": "boolean" },
+        "isGoogleAccount": { "type": "boolean" },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "fullName", "email"]
+    },
+    "ResumeDocument": {
+      "title": "ResumeDocument",
+      "description": "Stored resume information and analysis",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "fullName": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 120 },
+        "email": { "type": "string", "maxLength": 150 },
+        "atsScore": { "type": "number" },
+        "skillsCount": { "type": "number" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "fullName", "title"]
+    },
+    "SavedJob": {
+      "title": "SavedJob",
+      "description": "Saved job postings or applied positions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "jobTitle": { "type": "string", "maxLength": 150 },
+        "company": { "type": "string", "maxLength": 150 },
+        "location": { "type": "string", "maxLength": 150 },
+        "salary": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "maxLength": 50 },
+        "countryCode": { "type": "string", "maxLength": 10 },
+        "applyUrl": { "type": "string", "maxLength": 1000 },
+        "savedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "jobTitle", "company"]
+    },
+    "DatabaseEntry": {
+      "title": "DatabaseEntry",
+      "description": "Real-time activity audit log entry visible in live entries viewer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "collectionName": { "type": "string", "maxLength": 64 },
+        "action": { "type": "string", "maxLength": 64 },
+        "entityId": { "type": "string", "maxLength": 128 },
+        "summary": { "type": "string", "maxLength": 300 },
+        "details": { "type": "string", "maxLength": 2000 },
+        "timestamp": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "collectionName", "action", "summary"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User accounts and profile settings"
+    },
+    "/resumes/{resumeId}": {
+      "schema": { "$ref": "#/entities/ResumeDocument" },
+      "description": "User resumes and analysis scores"
+    },
+    "/savedJobs/{savedJobId}": {
+      "schema": { "$ref": "#/entities/SavedJob" },
+      "description": "Saved jobs and applied records"
+    },
+    "/databaseEntries/{entryId}": {
+      "schema": { "$ref": "#/entities/DatabaseEntry" },
+      "description": "Real-time stream of all database operations"
+    }
+  }
+}

@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0284c7;
+  --color-primary-container: #0369a1;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #e0f2fe;
+  --color-primary-fixed: #e0f2fe;
+  --color-primary-fixed-dim: #bae6fd;
+  --color-on-primary-fixed: #082f49;
+  --color-on-primary-fixed-variant: #0369a1;
+  --color-inverse-primary: #7dd3fc;
+
+  --color-secondary: #0891b2;
+  --color-secondary-container: #cffafe;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #164e63;
+  --color-secondary-fixed: #cffafe;
+  --color-secondary-fixed-dim: #a5f3fc;
+  --color-on-secondary-fixed: #083344;
+  --color-on-secondary-fixed-variant: #0e7490;
+
+  --color-tertiary: #d97706;
+  --color-tertiary-container: #fef3c7;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #78350f;
+  --color-tertiary-fixed: #ffedd5;
+  --color-tertiary-fixed-dim: #fed7aa;
+  --color-on-tertiary-fixed: #431407;
+  --color-on-tertiary-fixed-variant: #9a3412;
+
+  --color-background: #f0f7fb;
+  --color-on-background: #0b192c;
+  --color-surface: #f0f7fb;
+  --color-surface-dim: #d8e8f2;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f9fc;
+  --color-surface-container: #e6f1f7;
+  --color-surface-container-high: #dbeaf3;
+  --color-surface-container-highest: #cee2ee;
+  --color-surface-variant: #cee2ee;
+  --color-on-surface: #0b192c;
+  --color-on-surface-variant: #334e68;
+  --color-surface-tint: #0284c7;
+
+  --color-inverse-surface: #091728;
+  --color-inverse-on-surface: #f0f9ff;
+
+  --color-outline: #627d98;
+  --color-outline-variant: #c4d7e5;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --font-display-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-xl: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-md: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-sm: 'Plus Jakarta Sans', sans-serif;
+  --font-body-lg: 'Inter', sans-serif;
+  --font-body-md: 'Inter', sans-serif;
+  --font-body-sm: 'Inter', sans-serif;
+  --font-label-lg: 'Inter', sans-serif;
+  --font-label-md: 'Inter', sans-serif;
+  --font-label-sm: 'Inter', sans-serif;
+  --font-code-inline: 'JetBrains Mono', monospace;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-margin-sm: 1rem;
+  --spacing-margin: 2rem;
+  --spacing-margin-lg: 3rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-sm: 1rem;
+  --spacing-gutter-lg: 2rem;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f7fb;
+  color: #0b192c;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #06111e;
+  color: #f1f5f9;
+}
+
+.dark header {
+  background-color: #0a1829;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark aside {
+  background-color: #050d18;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.material-symbols-outlined.fill-1 {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #a9c5d8;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #18304c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #627d98;
+}
+
+/* Screen vs Print visibility */
+.print-only {
+  display: none !important;
+}
+
+/* HIGH-FIDELITY PRINT & BROWSER PDF EXPORT ENGINE */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.55in 0.55in 0.55in 0.55in;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide app chrome, headers, sidebars, interactive tools */
+  aside,
+  header,
+  nav,
+  button,
+  .no-print,
+  main {
+    display: none !important;
+  }
+
+  /* Unhide dedicated high-fidelity print document */
+  .print-only {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+}

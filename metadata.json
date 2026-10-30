@@ -1,0 +1,6 @@
+{
+  "name": "CareerAI Engine",
+  "description": "Executive suite AI resume analyzer, real-time ATS scorecard, actionable diagnostic annotations, and executive career co-pilot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
